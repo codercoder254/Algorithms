@@ -1,4 +1,6 @@
+//@a.d.a.n_noa😇
 #include <stdio.h>
+#include <stdlib.h>
 
 //function to ask input from user
 int* input()
@@ -7,7 +9,12 @@ int* input()
     printf("Enter number of elements: ");
     scanf("%d", &n);
 
-    int arr[n];
+    int *arr = malloc(n * sizeof(int));
+    if(!arr)
+    {
+        perror("Memory allocation failed\n");
+        exit(1);
+    }
     printf("Enter %d elements: ", n);
     for (int i = 0; i < n; i++)
     {
@@ -24,7 +31,7 @@ int search(int arr[], int target)
     {
         if (arr[i] == target)
         {
-            return i;
+            return arr[i];
         }
     }
     return -1;
